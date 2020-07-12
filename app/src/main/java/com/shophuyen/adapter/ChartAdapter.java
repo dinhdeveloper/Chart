@@ -53,9 +53,9 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
                 maxOne = number;
             }
         }
-        long phantramOne = (Long.parseLong(categoryModel.getProductPrice())*1000)/maxOne;
+        long phantramOne = ((Long.parseLong(categoryModel.getProductPrice())*1000)/maxOne)/2;
         paramsOne.height = Integer.parseInt(String.valueOf(phantramOne));
-        holder.id_one.setText(phantramOne + "%");
+        //holder.id_one.setText(phantramOne + "");
         holder.layout_one.setLayoutParams(paramsOne);
 
         //two
@@ -71,9 +71,9 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
                 maxTwo = number;
             }
         }
-        long phantramTwo = (Long.parseLong(categoryModel.getPriceSale())*1000)/maxTwo;
+        long phantramTwo = ((Long.parseLong(categoryModel.getPriceSale())*1000)/maxTwo)/2;
         paramsTwo.height = Integer.parseInt(String.valueOf(phantramTwo));
-        holder.id_two.setText(phantramTwo + "%");
+        //holder.id_two.setText(phantramTwo + "");
         holder.layout_two.setLayoutParams(paramsTwo);
 
         holder.thang.setText("Tháng " + (position + 1));
