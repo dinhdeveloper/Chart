@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<CategoryModel> modelList = (List<CategoryModel>) response.body();
                     try {
+
                         ChartAdapter character = new ChartAdapter(modelList, getApplicationContext());
                         recyclerview.setAdapter(character);
                         character.notifyDataSetChanged();

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shophuyen.testchart.CategoryModel;
 import com.shophuyen.testchart.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> {
@@ -36,6 +37,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CategoryModel categoryModel = modelList.get(position);
+
         LinearLayout.LayoutParams paramsOne = (LinearLayout.LayoutParams) holder.layout_one.getLayoutParams();
         LinearLayout.LayoutParams paramsTwo = (LinearLayout.LayoutParams) holder.layout_two.getLayoutParams();
         // Changes the height and width to the specified *pixels*
@@ -51,8 +53,9 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
                 maxOne = number;
             }
         }
-        paramsOne.height = Integer.parseInt(categoryModel.getProductPrice()) / 100000;
-        //holder.id_one.setText((Integer.parseInt(String.valueOf(paramsOne.height)))/100000 + "%");
+        long phantramOne = (Long.parseLong(categoryModel.getProductPrice())*1000)/maxOne;
+        paramsOne.height = Integer.parseInt(String.valueOf(phantramOne));
+        holder.id_one.setText(phantramOne + "%");
         holder.layout_one.setLayoutParams(paramsOne);
 
         //two
@@ -68,8 +71,9 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
                 maxTwo = number;
             }
         }
-        paramsTwo.height = (Integer.parseInt(categoryModel.getPriceSale()) / 100000)/2;
-        //holder.id_two.setText((Integer.parseInt(String.valueOf(paramsTwo.height)))/100000 + "%");
+        long phantramTwo = (Long.parseLong(categoryModel.getPriceSale())*1000)/maxTwo;
+        paramsTwo.height = Integer.parseInt(String.valueOf(phantramTwo));
+        holder.id_two.setText(phantramTwo + "%");
         holder.layout_two.setLayoutParams(paramsTwo);
 
         holder.thang.setText("Tháng " + (position + 1));
