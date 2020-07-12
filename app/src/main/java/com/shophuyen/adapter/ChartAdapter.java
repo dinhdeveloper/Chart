@@ -20,6 +20,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
 
     List<CategoryModel> modelList;
     Context context;
+
     public ChartAdapter(List<CategoryModel> modelList, Context context) {
         this.modelList = modelList;
         this.context = context;
@@ -50,7 +51,8 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
                 maxOne = number;
             }
         }
-        paramsOne.height = Integer.parseInt(categoryModel.getProductPrice())/100000;
+        paramsOne.height = Integer.parseInt(categoryModel.getProductPrice()) / 100000;
+        //holder.id_one.setText((Integer.parseInt(String.valueOf(paramsOne.height)))/100000 + "%");
         holder.layout_one.setLayoutParams(paramsOne);
 
         //two
@@ -66,10 +68,11 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
                 maxTwo = number;
             }
         }
-        paramsTwo.height = Integer.parseInt(categoryModel.getPriceSale())/100000;
+        paramsTwo.height = (Integer.parseInt(categoryModel.getPriceSale()) / 100000)/2;
+        //holder.id_two.setText((Integer.parseInt(String.valueOf(paramsTwo.height)))/100000 + "%");
         holder.layout_two.setLayoutParams(paramsTwo);
 
-        holder.thang.setText("Tháng "+(position+1));
+        holder.thang.setText("Tháng " + (position + 1));
     }
 
     @Override
@@ -82,12 +85,16 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
         LinearLayout layout_two;
         LinearLayout layout_one;
         TextView thang;
+        TextView id_two;
+        TextView id_one;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             layout_one = itemView.findViewById(R.id.layout_one);
             layout_two = itemView.findViewById(R.id.layout_two);
             thang = itemView.findViewById(R.id.thang);
+            id_two = itemView.findViewById(R.id.id_two);
+            id_one = itemView.findViewById(R.id.id_one);
         }
     }
 }
