@@ -53,13 +53,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
                 maxOne = number;
             }
         }
-        long phantramOne = ((Long.parseLong(categoryModel.getProductPrice())*1000)/maxOne)/2;
-        paramsOne.height = Integer.parseInt(String.valueOf(phantramOne));
-        //holder.id_one.setText(phantramOne + "");
-        holder.layout_one.setLayoutParams(paramsOne);
-
         //two
-
         int minTwo = Integer.parseInt(modelList.get(0).getPriceSale());
         int maxTwo = Integer.parseInt(modelList.get(0).getPriceSale());
         for (int i = 0; i < modelList.size(); i++) {
@@ -71,10 +65,25 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
                 maxTwo = number;
             }
         }
-        long phantramTwo = ((Long.parseLong(categoryModel.getPriceSale())*1000)/maxTwo)/2;
-        paramsTwo.height = Integer.parseInt(String.valueOf(phantramTwo));
-        //holder.id_two.setText(phantramTwo + "");
-        holder.layout_two.setLayoutParams(paramsTwo);
+
+        int maxAll = 0;
+        if (maxOne>maxTwo){
+            maxAll = maxOne;
+        }
+        else {
+            maxAll = maxTwo;
+        }
+
+
+//        long phantramOne = ((Long.parseLong(categoryModel.getProductPrice())*1000)/maxOne)/2;
+//        paramsOne.height = Integer.parseInt(String.valueOf(phantramOne));
+//        //holder.id_one.setText(phantramOne + "");
+//        holder.layout_one.setLayoutParams(paramsOne);
+//
+//        long phantramTwo = ((Long.parseLong(categoryModel.getPriceSale())*1000)/maxTwo)/2;
+//        paramsTwo.height = Integer.parseInt(String.valueOf(phantramTwo));
+//        //holder.id_two.setText(phantramTwo + "");
+//        holder.layout_two.setLayoutParams(paramsTwo);
 
         holder.thang.setText("Tháng " + (position + 1));
     }
